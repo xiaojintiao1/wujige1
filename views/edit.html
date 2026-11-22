@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><title>编辑内容</title>
+<style>
+body{font-family:sans-serif;background:#f5f5f5;padding:2rem}
+.box{max-width:700px;margin:auto;background:#fff;padding:2rem;border-radius:12px}
+label{display:block;margin:1rem 0 .3rem;font-weight:bold}
+input,textarea{width:100%;padding:10px;border:1px solid #ddd;border-radius:6px}
+textarea{height:120px}
+button{margin-top:1.5rem;padding:12px 30px;background:#ff2d55;color:#fff;border:none;border-radius:8px}
+</style>
+</head>
+<body>
+<div class="box">
+  <a href="/admin/logout" style="float:right">退出</a>
+  <h2>编辑网站内容</h2>
+  <form method="POST" action="/admin/save">
+    <label>站点名称</label><input name="siteName" id="siteName">
+    <label>公告内容</label><textarea name="announcement" id="announcement"></textarea>
+    <label>QQ</label><input name="qq" id="qq">
+    <label>Telegram</label><input name="tg" id="tg">
+    <label>微信/V</label><input name="wechat" id="wechat">
+    <label>上班时间</label><input name="workTime" id="workTime">
+    <input type="hidden" name="products" id="products">
+    <button>保存</button>
+  </form>
+</div>
+<script>
+async function load(){
+  const d=await (await fetch('/api/content')).json();
+  for(let k of ['siteName','announcement','qq','tg','wechat','workTime']) 
+    if(document.getElementById(k)) document.getElementById(k).value=d[k]||'';
+  document.getElementById('products').value=JSON.stringify(d.products||[]);
+}
+load();
+</script>
+</body>
+</html>
