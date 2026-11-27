@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TK-北冥工作室</title>
+<title>乌鸡哥</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:#f7f8fc;color:#333;min-height:100vh}
@@ -20,7 +20,7 @@ footer{text-align:center;padding:2rem;color:#999;font-size:0.85rem}
 </head>
 <body>
 <header>
-  <div class="logo">🎵 <span id="siteName">TK-北冥工作室</span></div>
+  <div class="logo">🎵 <span id="siteName">乌鸡哥</span></div>
 </header>
 
 <div class="hero-bg">
@@ -39,8 +39,8 @@ footer{text-align:center;padding:2rem;color:#999;font-size:0.85rem}
 async function load(){
   try{
     const d = await (await fetch('/api/content')).json();
-    document.getElementById('siteName').textContent = d.siteName || 'TK-北冥工作室';
-    document.title = d.siteName || 'TK-北冥工作室';
+    document.getElementById('siteName').textContent = d.siteName || '乌鸡哥';
+    document.title = d.siteName || '乌鸡哥';
     document.getElementById('announcement').textContent = (d.announcement||'').replace(/\\n/g,'\n');
     document.getElementById('contactInfo').innerHTML = `
       <strong>QQ:</strong> ${d.qq||'-'} &nbsp;|&nbsp; 
